@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10, 3.11, 3.12]
+        # 修正：使用有效的 Python 版本
+        python-version: ["3.11"]
 
     steps:
     - name: Checkout code

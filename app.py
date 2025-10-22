@@ -1,6 +1,7 @@
 from collections import defaultdict
 from typing import List
 
+
 def dedupe_header(columns: List[str]) -> List[str]:
     """
     Make header column names unique by appending numeric suffixes to duplicates.
@@ -23,13 +24,6 @@ def dedupe_header(columns: List[str]) -> List[str]:
             result.append(f"{col}.{count}")
         seen_counts[col] += 1
     return result
-
-if __name__ == "__main__":
-    # 示例用法
-    test_columns = ["id", "name", "id", "name", "name", "age"]
-    result = dedupe_header(test_columns)
-    print("原始列名:", test_columns)
-    print("去重后列名:", result)
 
 
 def additional_functionality_example():
@@ -58,7 +52,7 @@ def get_duplicate_stats(columns: List[str]) -> dict:
 
 
 if __name__ == "__main__":
-    # 更新主程序以展示新功能
+    # 示例用法
     test_columns = ["id", "name", "id", "name", "name", "age"]
     result = dedupe_header(test_columns)
     stats = get_duplicate_stats(test_columns)

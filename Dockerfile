@@ -3,4 +3,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "app/app.py"]
+CMD ["python", "app.py"]  # 现在直接运行 app.py

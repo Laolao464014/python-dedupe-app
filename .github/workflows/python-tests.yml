@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         # 修正：使用有效的 Python 版本
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.11"]
 
     steps:
     - name: Checkout code

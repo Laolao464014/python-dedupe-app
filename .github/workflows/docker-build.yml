@@ -1,0 +1,23 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main, staging ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Docker image
+      run: |
+        docker build -t dedupe-app:latest .
+
+    - name: Test Docker image
+      run: |
+        docker run --rm dedupe-app:latest

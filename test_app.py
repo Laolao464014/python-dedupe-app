@@ -1,18 +1,28 @@
-from app.app import dedupe_header
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from app.app import dedupe_header, additional_functionality_example, get_duplicate_stats
+
 
 def test_unique_columns():
     assert dedupe_header(["id", "name", "age"]) == ["id", "name", "age"]
 
+
 def test_duplicate_columns():
     assert dedupe_header(["id", "id", "id"]) == ["id", "id.1", "id.2"]
+
 
 def test_mixed_columns():
     cols = ["id", "name", "id", "name", "name"]
     expected = ["id", "name", "id.1", "name.1", "name.2"]
     assert dedupe_header(cols) == expected
 
+
 def test_empty_list():
     assert dedupe_header([]) == []
+
 
 def test_special_characters():
     cols = ["col-1", "col-1", "col_2", "col_2"]
@@ -21,8 +31,6 @@ def test_special_characters():
 
 
 def test_additional_functionality():
-    from app.app import additional_functionality_example, get_duplicate_stats
-
     assert additional_functionality_example() == "This is additional functionality for demonstration"
 
     # 测试统计功能

@@ -18,3 +18,19 @@ def test_special_characters():
     cols = ["col-1", "col-1", "col_2", "col_2"]
     expected = ["col-1", "col-1.1", "col_2", "col_2.1"]
     assert dedupe_header(cols) == expected
+
+
+def test_additional_functionality():
+    from app.app import additional_functionality_example, get_duplicate_stats
+
+    assert additional_functionality_example() == "This is additional functionality for demonstration"
+
+    # 测试统计功能
+    columns = ["id", "name", "id", "age", "name"]
+    stats = get_duplicate_stats(columns)
+
+    assert stats["total_columns"] == 5
+    assert stats["unique_columns"] == 3
+    assert stats["duplicate_count"] == 2
+    assert stats["duplicate_columns"]["id"] == 2
+    assert stats["duplicate_columns"]["name"] == 2
